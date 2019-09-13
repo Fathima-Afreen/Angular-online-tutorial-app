@@ -1,0 +1,49 @@
+<h1 align="left">Send Us a Message</h1>
+
+<div id="gray-container">
+      <div class="row">
+          
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+      </div>
+    </label>
+  
+    <label>
+      Message:
+      <textarea formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta">
+  
+  </form>
+
+
+
+  <div class="col" style="background-color: lightgrey">
+
+<p>Howdy! We typically respond to requests within hours. Please do not ask us for free coupons to our paid courses. Anything else?  Shoot away!</p>
+
+<p><strong>Note:</strong> On April 19, 2019 - We updated the site to a subscription service instead of charging per course. If you lost access to a previously paid course, please contact us and let us know which course you paid for and we will give you access to the videos.</p>
+</div>
+
+
+</div>
+</div>
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong> 
+    <span>{{ messageForm.controls.name.value }}</span>
+
+    <strong>Message:</strong> 
+    <span>{{ messageForm.controls.message.value }}</span>
+  </div>
